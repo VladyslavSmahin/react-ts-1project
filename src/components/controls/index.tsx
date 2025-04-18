@@ -49,6 +49,15 @@ const Controls: React.FC<ControlsProps> = ({
 
         createFiguresCube(Y, X, Z);
 
+        gsap.to(camera.position, {
+            x: 0,
+            y: 0,
+            z: 10 + Math.max(X, Y, Z),
+            duration: 1.5,
+            ease: 'power2.out'
+        })
+
+
         if (inputYRef.current) inputYRef.current.value = '';
         if (inputXRef.current) inputXRef.current.value = '';
         if (inputZRef.current) inputZRef.current.value = '';
@@ -70,13 +79,15 @@ const Controls: React.FC<ControlsProps> = ({
 
             objectsRef.current?.forEach(obj => {
                 console.log('obj');
-                const targetX = (Math.random() * 40) - 20;
-                const targetY = (Math.random() * 40) - 20;
-                const targetZ = (Math.random() * 40) - 20;
+                const range = 10 + Math.random() * 20;
+                const targetX = (Math.random() * range) - range / 2;
+                const targetY = (Math.random() * range) - range / 2;
+                const targetZ = (Math.random() * range) - range / 2;
+
 
                 gsap.to(obj.position, {
                     delay: 1.6,
-                    duration: Math.random() * 3,
+                    duration: 3,
                     x: targetX,
                     y: targetY,
                     z: targetZ,
@@ -86,13 +97,14 @@ const Controls: React.FC<ControlsProps> = ({
                 gsap.to(obj.rotation, {
                     delay: 2,
                     duration: 4,
-                    x: +Math.PI * 2,
+                    x: obj.rotation.x + Math.PI * 2,  // Добавляем поворот на 360°
+                    y: obj.rotation.y + Math.PI,      // Поворот на 180°
                     ease: 'power2.out'
-                })
+                });
             })
             const cameraX = cameraTargetRef.current.x;
             const cameraY = cameraTargetRef.current.y;
-            const cameraZ = 40;
+            const cameraZ = 30;
 
             gsap.to(camera.position, {
                 duration: 3,
@@ -108,7 +120,7 @@ const Controls: React.FC<ControlsProps> = ({
                 const [targetX, targetY, targetZ] = initialPositionsRef.current[index] || [0, 0, 0];
 
                 gsap.to(obj.position, {
-                    duration: Math.random() * 5,
+                    duration: 2,
                     x: targetX,
                     y: targetY,
                     z: targetZ,

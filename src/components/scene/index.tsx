@@ -30,7 +30,8 @@ const Scene: React.FC = () => {
         setCanvas(renderer.domElement);
 
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        const pixelRatio = Math.min(window.devicePixelRatio, 2);
+        renderer.setPixelRatio(pixelRatio);
 
         const loadingManager = new THREE.LoadingManager();
         loadingManager.onStart = () => console.log('onStart');
@@ -40,7 +41,7 @@ const Scene: React.FC = () => {
         loadingManager.onError = (url) => console.log(`onError: ${url}`);
 
         const rgbeLoader = new RGBELoader();
-        rgbeLoader.load('/textures/environmentMap/2k.hdr', (texture: THREE.DataTexture) => {
+        rgbeLoader.load('/textures/environmentMap/2k.hdr', (texture:  THREE.Texture) => {
             texture.mapping = THREE.EquirectangularReflectionMapping;
             newScene.environment = texture;
             newScene.background = texture;

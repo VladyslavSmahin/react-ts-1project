@@ -68,16 +68,16 @@ const MeshGroup: React.FC<MeshGroupProps> = ( { scene, camera,  canvas }) => {
     return () => {
 
 
-  /*      texturesRef.current.forEach((texture) => texture.dispose());
+       texturesRef.current.forEach((texture) => texture.dispose());
         geometriesRef.current.forEach((geometry) => geometry.dispose());
-        materialsRef.current.forEach((material) => material.dispose());*/
+        materialsRef.current.forEach((material) => material.dispose());
 
     };
-}, [scene]);
+},[]);
 
     const createFiguresCube = (Y: number, X: number, Z: number): void => {
 
-       /* objectsRef.current.forEach((obj) => {
+        objectsRef.current.forEach((obj) => {
             scene.remove(obj);
             obj.geometry.dispose();
             if (Array.isArray(obj.material)) {
@@ -85,7 +85,7 @@ const MeshGroup: React.FC<MeshGroupProps> = ( { scene, camera,  canvas }) => {
             } else {
                 obj.material.dispose();
             }
-        });*/
+        });
         objectsRef.current = [];
         initialPositionsRef.current = [];
 
