@@ -97,8 +97,8 @@ const Controls: React.FC<ControlsProps> = ({
                 gsap.to(obj.rotation, {
                     delay: 2,
                     duration: 4,
-                    x: obj.rotation.x + Math.PI * 2,  // Добавляем поворот на 360°
-                    y: obj.rotation.y + Math.PI,      // Поворот на 180°
+                    x: obj.rotation.x + Math.PI * 2,
+                    y: obj.rotation.y + Math.PI,
                     ease: 'power2.out'
                 });
             })

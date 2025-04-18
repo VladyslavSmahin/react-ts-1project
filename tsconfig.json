@@ -48,5 +48,5 @@
     /* Custom */
     // "noUnusedLocals": false
   },
-  "include": ["src", "src/*.d.ts"]
+  "include": ["src", "src/*.ts"]
 }
